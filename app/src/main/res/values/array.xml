@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <string-array name="inputMoneyType">
+        <item>KRW</item>
+        <item>USD</item>
+        <item>JPY</item>
+        <item>CNY</item>
+        <item>SGD</item>
+        <item>AUD</item>
+    </string-array>
+    <string-array name="moneyUsageType">
+        <item>식비</item>
+        <item>교통비</item>
+        <item>쇼핑</item>
+        <item>관광</item>
+        <item>숙박비</item>
+        <item>항공비</item>
+        <item>기타</item>
+    </string-array>
+
+</resources>

@@ -1,4 +1,4 @@
-package com.kimdora.timeline.model;
+package com.melgu.travellog.model;
 
 public class PostTextItem {
 

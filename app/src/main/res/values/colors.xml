@@ -7,4 +7,29 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- SplashActivity -->
+    <color name="splash_background">#CFF09E</color>
+    <color name="marker_main">#95E0C8</color>
+    <color name="marker_sub">#619786</color>
+
+    <!-- Main  -->
+    <color name="dark_green">#9FBD75</color>
+    <color name="light_green">#E4F0D8</color>
+    <color name="more_light_green">#FDFFF4</color>
+    <color name="brown">#615549</color>
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorIncomeMoney">#1185DA</color>
+    <color name="colorSpentMoney">#FA356C</color>
+
+    <color name="card_bg_color">#FBFBFB</color>
+    <color name="card_bg_dark_color">#0e0e0e</color>
+    <color name="title_text_color">#258bd6</color>
+    <color name="content_text_color">#999da4</color>
+    <color name="yellow">#FFC107</color>
+    <color name="gray_line_color">#E7E7E7</color>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.kimdora.timeline.Adapter;
+package com.melgu.travellog.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kimdora.timeline.R;
-import com.kimdora.timeline.model.TimelineItem;
-import com.kimdora.timeline.utils.Constant;
+import com.melgu.travellog.R;
+import com.melgu.travellog.model.TimelineItem;
+import com.melgu.travellog.utils.Constant;
 
 import java.util.List;
 

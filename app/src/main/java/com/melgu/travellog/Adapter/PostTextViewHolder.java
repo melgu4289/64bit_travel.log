@@ -1,4 +1,4 @@
-package com.kimdora.timeline.Adapter;
+package com.melgu.travellog.Adapter;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -7,9 +7,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
-import com.kimdora.timeline.R;
-import com.kimdora.timeline.model.PostTextItem;
-import com.kimdora.timeline.model.TimelineItem;
+import com.melgu.travellog.R;
+import com.melgu.travellog.model.PostTextItem;
+import com.melgu.travellog.model.TimelineItem;
 
 public class PostTextViewHolder extends BaseViewHolder {
 

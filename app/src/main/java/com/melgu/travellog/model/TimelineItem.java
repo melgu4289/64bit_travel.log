@@ -1,6 +1,6 @@
-package com.kimdora.timeline.model;
+package com.melgu.travellog.model;
 
-import com.kimdora.timeline.utils.Constant;
+import com.melgu.travellog.utils.Constant;
 
 public class TimelineItem {
 

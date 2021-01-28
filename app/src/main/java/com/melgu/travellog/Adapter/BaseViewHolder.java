@@ -1,11 +1,11 @@
-package com.kimdora.timeline.Adapter;
+package com.melgu.travellog.Adapter;
 
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kimdora.timeline.model.TimelineItem;
+import com.melgu.travellog.model.TimelineItem;
 
 public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,18 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="18dp"
+        android:layout_weight="1"
+        android:elevation="8dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:text="HELLO" />
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <com.irozon.justbar.JustBar
+        android:id="@+id/justBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.irozon.justbar.BarItem
+            android:id="@+id/setting"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:icon="@drawable/ic_baseline_settings_24"
+            app:selectedColor="@color/dark_green"
+            app:unSelectedColor="@color/light_green"
+            app:selectedIconColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:unSelectedIconColor="@color/brown"
+            android:elevation="10dp"
+
+            app:radius="25dp" />
+
+        <com.irozon.justbar.BarItem
+            android:id="@+id/map"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:icon="@drawable/ic_baseline_map_24"
+            app:selectedColor="@color/dark_green"
+            app:unSelectedColor="@color/light_green"
+            app:selectedIconColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:unSelectedIconColor="@color/brown"
+            android:elevation="10dp"
+            app:radius="25dp" />
+
+        <com.irozon.justbar.BarItem
+            android:id="@+id/home"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:icon="@drawable/ic_baseline_home_24"
+            app:selected="true"
+            app:selectedColor="@color/dark_green"
+            app:unSelectedColor="@color/light_green"
+            app:selectedIconColor="@color/white"
+            android:elevation="10dp"
+            app:unSelectedIconColor="@color/brown"
+            app:radius="25dp" />
+
+        <com.irozon.justbar.BarItem
+            android:id="@+id/money_management"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:icon="@drawable/ic_baseline_monetization_on_24"
+            app:selectedColor="@color/dark_green"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:unSelectedColor="@color/light_green"
+            app:selectedIconColor="@color/white"
+            android:elevation="10dp"
+            app:unSelectedIconColor="@color/brown"
+            app:radius="25dp" />
+
+        <com.irozon.justbar.BarItem
+            android:id="@+id/timeline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:icon="@drawable/ic_baseline_timeline_24"
+            app:selectedColor="@color/dark_green"
+            app:unSelectedColor="@color/light_green"
+            app:selectedIconColor="@color/white"
+            app:unSelectedIconColor="@color/brown"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="10dp"
+            app:radius="25dp" />
+
+    </com.irozon.justbar.JustBar>
+
+</LinearLayout>

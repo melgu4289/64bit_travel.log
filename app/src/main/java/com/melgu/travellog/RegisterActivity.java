@@ -175,31 +175,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                                         db.collection("userCard").document(uid).collection("cardList").document("Seoul").set(data)
                                                 .addOnSuccessListener(aVoid -> {
-                                                    Toast.makeText(RegisterActivity.this, "성공1", Toast.LENGTH_SHORT).show();
-                                                    Toast.makeText(RegisterActivity.this, "성공1", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, "데이터 생성 성공", Toast.LENGTH_SHORT).show();
                                                 })
                                                 .addOnFailureListener(e -> {
-                                                    Toast.makeText(RegisterActivity.this, "실패1", Toast.LENGTH_SHORT).show();
-                                                    Toast.makeText(RegisterActivity.this, "실패1", Toast.LENGTH_SHORT).show();
-                                                });
-                                        Map<String, Object> data1 = new HashMap<>();
-                                        data.put("travelDayFirst", "2010-10-20");
-                                        data.put("travelDayLast", "2010-10-29");
-                                        data.put("currentMoney", 9009);
-                                        data.put("firstMoney", 42434243);
-
-                                        db.collection("userCard").document(uid).collection("cardList").document("Japan").set(data1)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        Toast.makeText(RegisterActivity.this, "성공2", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Toast.makeText(RegisterActivity.this, "실패2", Toast.LENGTH_SHORT).show();
-                                                    }
+                                                    Toast.makeText(RegisterActivity.this, "데이터 생성 실패", Toast.LENGTH_SHORT).show();
                                                 });
 
                                         //                    db.collection("userCard").document(uid).set(data)

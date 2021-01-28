@@ -26,6 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.mancj.slideup.SlideUp;
 import com.mancj.slideup.SlideUpBuilder;
+import com.melgu.travellog.ui.TimelineActivity;
 
 import org.w3c.dom.Document;
 
@@ -41,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
-        StorageReference pathReference = storageReference.child("CountryImage/한국.jpg");
 
         EditText input_email = findViewById(R.id.input_email);
         EditText input_password = findViewById(R.id.input_password);
@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                                             }
                                         });
                                         // 로그인 성공시
-                                        Intent intent = new Intent(LoginActivity.this, CardActivity.class);
+                                        Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
                                         startActivity(intent);
                                         finish();
                                     } else {

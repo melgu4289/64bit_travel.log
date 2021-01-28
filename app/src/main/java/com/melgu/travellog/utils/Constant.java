@@ -1,4 +1,4 @@
-package com.kimdora.timeline.utils;
+package com.melgu.travellog.utils;
 
 public class Constant {
 

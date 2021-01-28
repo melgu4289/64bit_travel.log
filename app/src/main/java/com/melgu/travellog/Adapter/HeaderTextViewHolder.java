@@ -1,13 +1,13 @@
-package com.kimdora.timeline.Adapter;
+package com.melgu.travellog.Adapter;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.kimdora.timeline.R;
-import com.kimdora.timeline.model.HeaderTextItem;
-import com.kimdora.timeline.model.TimelineItem;
+import com.melgu.travellog.R;
+import com.melgu.travellog.model.HeaderTextItem;
+import com.melgu.travellog.model.TimelineItem;
 
 public class HeaderTextViewHolder extends BaseViewHolder {
 
