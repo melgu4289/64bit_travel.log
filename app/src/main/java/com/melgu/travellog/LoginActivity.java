@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         });
 
+//        btn_login 버튼 클릭시
         Button btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,42 +64,47 @@ public class LoginActivity extends AppCompatActivity {
                 String email = input_email.getText().toString().trim();
                 String password = input_password.getText().toString().trim();
 
-                firebaseAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()) {
-                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    if (user != null) {
-                                        String uid = user.getUid();
-                                        DocumentReference docRef = db.collection("userCard").document(uid);
-                                        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                if (task.isSuccessful()) {
-                                                    DocumentSnapshot document = task.getResult();
-                                                    if (document.exists()) {
-                                                        Toast.makeText(LoginActivity.this, "데이터: " + document.getData(), Toast.LENGTH_SHORT).show();
-                                                    } else {
-                                                        Toast.makeText(LoginActivity.this, "존재하지 않는 doc", Toast.LENGTH_SHORT).show();
+//                이메일 또는 비밀번호 미입력시
+                if (email.equals("") || password.equals("")) {
+                    Toast.makeText(LoginActivity.this, "정보를 모두 입력해주세요!", Toast.LENGTH_SHORT).show();
+                } else {
+                    firebaseAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()) {
+                                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                        if (user != null) {
+                                            String uid = user.getUid();
+                                            DocumentReference docRef = db.collection("userCard").document(uid);
+                                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        DocumentSnapshot document = task.getResult();
+                                                        if (document.exists()) {
+                                                            Toast.makeText(LoginActivity.this, "데이터: " + document.getData(), Toast.LENGTH_SHORT).show();
+                                                        } else {
+                                                            Toast.makeText(LoginActivity.this, "존재하지 않는 doc", Toast.LENGTH_SHORT).show();
+                                                        }
                                                     }
                                                 }
-                                            }
-                                        });
-                                        // 로그인 성공시
-                                        Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(LoginActivity.this, "UID 가져오기에 실패했습니다.", Toast.LENGTH_SHORT).show();
-                                    }
+                                            });
+                                            // 로그인 성공시
+                                            Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(LoginActivity.this, "UID 가져오기에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                        }
 
-                                } else {
-                                    Toast.makeText(LoginActivity.this, "로그인 실패! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "로그인 실패! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
     }

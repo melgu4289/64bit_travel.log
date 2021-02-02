@@ -102,7 +102,7 @@ import java.util.Map;
 //                                        Toast.makeText(RegisterActivity.this, "회원가입에 성공했습니다!", Toast.LENGTH_SHORT).show();
 //                                    } else {
 //                                        mDialog.dismiss();
-//                                        Toast.makeText(RegisterActivity.this, "아이디 시발", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(RegisterActivity.this, "아이디", Toast.LENGTH_SHORT).show();
 //                                    }
 //                                }
 //                            });
@@ -139,8 +139,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-
-
         firebaseAuth = FirebaseAuth.getInstance();
         Button btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(v -> {
@@ -149,62 +147,56 @@ public class RegisterActivity extends AppCompatActivity {
             final String pwd = pwd_join.getText().toString().trim();
             final String pwd_check = pwd_join.getText().toString().trim();
 
-            if (pwd.equals(pwd_check)) {
-                final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
-                mDialog.setMessage("가입중입니다...");
-                mDialog.show();
+//            아이디, 비밀번호, 비밀번호 확인란 미입력시
 
-                // 파이어베이스에 신규계정 등록
-                firebaseAuth.createUserWithEmailAndPassword(email, pwd)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                // 성공시
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    if (user != null) {
-                                        String uid = user.getUid();
+            if (email.equals("")) {
 
-                                        final FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                        Map<String, Object> data = new HashMap<>();
-                                        data.put("travelDayFirst", "2020-10-20");
-                                        data.put("travelDayLast", "2020-10-29");
-                                        data.put("currentMoney", 10000);
-                                        data.put("firstMoney", 12000);
+                if (pwd.equals(pwd_check)) {
+                    final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
+                    mDialog.setMessage("가입중입니다...");
+                    mDialog.show();
 
-                                        db.collection("userCard").document(uid).collection("cardList").document("Seoul").set(data)
-                                                .addOnSuccessListener(aVoid -> {
-                                                    Toast.makeText(RegisterActivity.this, "데이터 생성 성공", Toast.LENGTH_SHORT).show();
-                                                })
-                                                .addOnFailureListener(e -> {
-                                                    Toast.makeText(RegisterActivity.this, "데이터 생성 실패", Toast.LENGTH_SHORT).show();
-                                                });
+                    // 파이어베이스에 신규계정 등록
+                    firebaseAuth.createUserWithEmailAndPassword(email, pwd)
+                            .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                        //                    db.collection("userCard").document(uid).set(data)
-                                        //                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        //                                @Override
-                                        //                                public void onSuccess(Void aVoid) {
-                                        //                                    Toast.makeText(RegisterActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                                        //                                }
-                                        //                            })
-                                        //                            .addOnFailureListener(new OnFailureListener() {
-                                        //                                @Override
-                                        //                                public void onFailure(@NonNull Exception e) {
-                                        //                                    Toast.makeText(RegisterActivity.this, "실패", Toast.LENGTH_SHORT).show();
-                                        //                                }
-                                        //                            });
+                                    // 성공시
+                                    if (task.isSuccessful()) {
+                                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                                        if (user != null) {
+                                            String uid = user.getUid();
+
+                                            final FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                            Map<String, Object> data = new HashMap<>();
+                                            data.put("travelDayFirst", "2020-10-20");
+                                            data.put("travelDayLast", "2020-10-29");
+                                            data.put("currentMoney", 10000);
+                                            data.put("firstMoney", 12000);
+
+                                            db.collection("userCard").document(uid).collection("cardList").document("Seoul").set(data)
+                                                    .addOnSuccessListener(aVoid -> {
+                                                        Toast.makeText(RegisterActivity.this, "데이터 생성 성공", Toast.LENGTH_SHORT).show();
+                                                    })
+                                                    .addOnFailureListener(e -> {
+                                                        Toast.makeText(RegisterActivity.this, "데이터 생성 실패", Toast.LENGTH_SHORT).show();
+                                                    });
+                                        }
+
+                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+
+                                    } else {
+                                        Toast.makeText(RegisterActivity.this, "등록 에러", Toast.LENGTH_SHORT).show();
                                     }
-
-                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-
-                                } else {
-                                    Toast.makeText(RegisterActivity.this, "등록 에러", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-                        });
+                            });
+                }
+
+
             }
 
 
